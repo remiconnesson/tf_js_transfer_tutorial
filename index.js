@@ -36,10 +36,12 @@ async function app() {
   const addExample = classId => {
     // Get the intermediate activation of MobileNet 'conv_preds' and pass that
     // to the KNN classifier.
+    console.log("Adding example {classId}. Starting inference.");
     const activation = net.infer(webcamElement, 'conv_preds');
-
+    console.log("Inference finished.");
     // Pass the intermediate activation to the classifier.
     classifier.addExample(activation, classId);
+    console.log("Example added successfully : {classId}");
   };
 
   // When clicking a button, add an example for that class.
